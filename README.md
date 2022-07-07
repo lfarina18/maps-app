@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# React Pro course project by Prof. Fernando Herrera 
+Web Site: https://fernando-herrera.com/#/search/react
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
