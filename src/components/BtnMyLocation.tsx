@@ -21,6 +21,9 @@ export const BtnMyLocation = () => {
         <button className="btn btn-primary"
             onClick={onClick}
             style={{
+                color: '#000',
+                backgroundColor: '#61DBFB',
+                borderColor: '#61DBFB',
                 position: 'fixed',
                 right: '20px',
                 top: '20px',
