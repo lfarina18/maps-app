@@ -5,9 +5,9 @@ import { Feature } from '../interfaces/Places';
 
 
 export const SearchResults = () => {
-  const { places, isLoadingPlaces } = useContext(PlacesContext);
+  const { places, isLoadingPlaces, userLocation } = useContext(PlacesContext);
 
-  const { map } = useContext(MapContext);
+  const { map, getRouteBetweenPoints } = useContext(MapContext);
 
   const [activeId, setActiveId] = useState('');
 
@@ -19,6 +19,13 @@ export const SearchResults = () => {
       zoom: 14,
     });
   
+  }
+
+  const getRoute = (place: Feature) => {
+    if(!userLocation) return;
+    const [lng, lat] = place.center;
+   
+    getRouteBetweenPoints(userLocation, [lng, lat]);
   }
 
   if (isLoadingPlaces) {
@@ -40,7 +47,10 @@ export const SearchResults = () => {
           <p style={{ fontSize: '12px' }}>
             {place.place_name}
           </p>
-          <button className={`btn btn-sm ${activeId === place.id ?  'btn-outline-primary' : 'btn-outline=dark' }`}>
+          <button 
+          className={`btn btn-sm ${activeId === place.id ?  'btn-outline-primary' : 'btn-outline=dark' }`}
+          onClick={() => getRoute(place)}
+          >
             Direcciones
           </button>
         </li>
